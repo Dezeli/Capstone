@@ -1,0 +1,22 @@
+import asyncio
+import json
+import uvicorn
+from fastapi import FastAPI, WebSocket
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
+from starlette.websockets import WedSocketDisconnect
+from control import drive, stop, set_logger
+
+app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static')
+
+@app.get("/")
+async def get_index():
+	return FileResponse("static/index.html")
+
+@app.websocket("/ws/joystick")
+async def joystick_endpoint(websocket: WebSocket):
+	await websocket.accept()
+
+	def send_long(msg: str):
+		async def _safe_send
