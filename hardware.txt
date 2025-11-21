@@ -1,0 +1,4 @@
+MDDS60 - 모터 드라이버
+Pixhawk 1 기본 - 픽스호크
+PI5 Model B - 라즈베리파이
+IYP-24V10Ah-A3 - 배터리팩
