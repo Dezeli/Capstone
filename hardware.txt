@@ -1,4 +1,35 @@
-MDDS60 - 모터 드라이버
+MDDS60 (RC MODE 1 1 0 0 1 1) - 모터 드라이버 
 Pixhawk 1 기본 - 픽스호크
 PI5 Model B - 라즈베리파이
 IYP-24V10Ah-A3 - 배터리팩
+
+
+* 공통사항
+배터리 -> 퓨즈 -> 전원 스위치 -> MDDS60 / DC-DC / Power Module
+
+PowerModule -> Pixhawk POWER IN
+DC-DC (5V 3~5A급) → PI 5V PIN2
+DC-DC GND → PI GND (9번)
+* DC to DC 컨버터는 24V to 5V 사용
+전원 스위치 -> MDDS60 V+ (24V)
+전원 스위치 -> MDDS60 V- (GND) 
+
+PI GPIO 14 (TX) PIN8 → Pixhawk TELEM2 RX (3번)
+PI GPIO 15 (RX) PIN10 → Pixhawk TELEM2 TX (2번)
+PI GND PIN9 -> Pixhawk TELEM2 GND (6번)
+
+PI GPIO 23 PIN 16 -> 조향 서보 모터 Signal (주황/노랑/흰색)
+DC-DC 5V BEC -> 조향 서보 모터 +5V 전원 (빨강)
+DC-DC GND  -> 조향 서보 모터 GND (갈색/검정)
+* DC to DC 컨버터는 24V to 5V 사용
+* 5V 4A~5A 이상 컨버터를 쓰면 Pi + 서보 모터 1개 정도는 같이 사용 가능
+
+Pixhawk MAIN OUT CH1 S → MDDS60 RC1 Ω (Signal)
+Pixhawk MAIN OUT CH1 - → MDDS60 RC1 - (GND)
+
+MDDS60 MOTOR 1 A -> DC 모터 +
+MDDS60 MOTOR 1 B -> DC 모터 -
+* DC모터는 극성이 없어서 테스트해보고 A/B를 반대로 바꿔 꼽으면 됨.
+
+* 이후 코딩 단계 시 참고 사항
+SERVO1_FUNCTION = 70  (Throttle, 단일 모터 출력으로 사용)
