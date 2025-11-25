@@ -1,7 +1,7 @@
 from pymavlink import mavutil
 import time
 
-master = mavutil.mavlink_connection('/dev/ttyAMA0', baud = 57600)
+master = mavutil.mavlink_connection('/dev/ttyAMA10', baud = 57600)
 print("Pixhawk connecting...")
 master.wait_heartbeat()
 print(f"Pixhawk success(System ID: {master.target_system})")
