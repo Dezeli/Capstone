@@ -1,0 +1,4 @@
+  File "C:\Dev\Capstone\test1.py", line 1
+    print("Hello)
+          ^
+SyntaxError: unterminated string literal (detected at line 1)
